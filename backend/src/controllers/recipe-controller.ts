@@ -25,4 +25,15 @@ recipeRouter
         res.send(recipe);
 
     })
-    .get('/:id', () => {})
+    .get('/:id', async (req, res) => {
+        const recipe = await req.recipeRepository!.findOne({ id: Number(req.params.id) });
+        if(!recipe){
+            res.sendStatus(404);
+        }
+        res.send(recipe);
+    })
+
+    .get('/find/:name', async (req, res) => {
+        const recipes = await req.recipeRepository!.find({ name: req.params.name });
+        res.send(recipes);
+    })
