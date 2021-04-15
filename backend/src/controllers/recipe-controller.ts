@@ -18,7 +18,7 @@ recipeRouter
 
         const wrappedRecipe = wrap(recipe);
 
-        wrappedRecipe.assign(req.body);
+        wrappedRecipe.assign(req.body, { em: req.orm.em });
 
         await req.recipeRepository!.persistAndFlush(recipe);
 

@@ -1,4 +1,5 @@
-import { Entity, PrimaryKey, Property } from "@mikro-orm/core"
+import { Collection, Entity, ManyToMany, PrimaryKey, Property } from "@mikro-orm/core"
+import { Ingredient } from "./ingredient";
 
 @Entity()
 export class Recipe {
@@ -14,6 +15,10 @@ export class Recipe {
 
     @Property()
     guide!: String;
+    
+    @Property()
+    value!: [number];
 
-    //ingredients: 
+    @ManyToMany(()=> Ingredient, 'recipes', { owner: true })
+    ingredients = new Collection<Ingredient>(this);
 }
