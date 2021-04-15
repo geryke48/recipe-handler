@@ -10,7 +10,7 @@ recipeRouter
         next();
     })
     .get('', async (req, res) => {
-        const recipes = await req.recipeRepository!.findAll();
+        const recipes = await req.recipeRepository!.findAll(['ingredients']);
         res.send(recipes);
     })
     .post('', async (req, res) => {
@@ -26,7 +26,7 @@ recipeRouter
 
     })
     .get('/:id', async (req, res) => {
-        const recipe = await req.recipeRepository!.findOne({ id: Number(req.params.id) });
+        const recipe = await req.recipeRepository!.findOne({ id: Number(req.params.id) }, ['ingredients']);
         if(!recipe){
             res.sendStatus(404);
         }
