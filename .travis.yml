@@ -1,12 +1,11 @@
 language: node_js
-
-# Use the most up-to-date version of Node.js
 node_js: node
-
-# our TypeScript project resides in a subfolder, so before any important script runs
-# we change to this directory
-# before_install: cd ..
-
-# The default install script is perfect: npm install
-
-# The default script is also perfect: npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: btCb6cXeU6oTveF5X51WHrLRuytymU+Hv3GuYBvjK365+sduSCEoh4RcL9q8vSD2pEyuQ0wGO5GwHljDT5KxPDvga+YCNYRsMfQ9y5juvCk9rcrm6SzqLPZUuRj0eVzMjYxud6wO6Za+WeqgxxCBIet2r7KpCRZ/G26ZWJGmUrYRt5koSUXg6B83O3nC6NJOOAVQZNIFj5mXJqdrXMEzXouQNFTv0n/5gPecFdw7flCsA5e7NOnR+23v8UvQAH3eKOesnJuUD4zl4WXmpwrVB56ollrtMuUdGj1iz705KfCz2qdkirilVhDRIgVB3KnZDbbcYzDBjmpnzBq1B+iYl5uj6nVGM2D9ipAiHIaXqo6QM2fv5nODskhFYarMSB3AsnMu4N2AfSb9uiuvg0kJB2L26nbP3JiHHXe/ygPHgrCITnjq+TdolTmGt2WWeJdSN6TYD0Gqc9NJYtPswIhgQunky5dLsl+twh6ck5seGyyKiqcpaUoz15JGlGQT+5j2sNpkC0pACuO/6pcLD+e2IfnwwD7MvM1DMSrQWSPu1woIhUjNJ8wP2KfxxwqgwiDouIHx5OGU7DMRo7+FQ/fO1gwxaGAa+fsg97sBHXdz1JGBnDa5OGK0kXTkFPSNtLxlbf93eGGbcs5G3ANZQJJvtX7rC6M6tIYGjhS3h3j0wy8=
+  app: recipe-handler
+  on:
+    repo: geryke48/recipe-handler
+    branch: main
+  skip_cleanup: 'true'
