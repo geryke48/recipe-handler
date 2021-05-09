@@ -6,7 +6,7 @@ deploy:
   provider: heroku
   api_key:
     secure: DFHl3zwctPsrXkatk9kUfxV0/gMrm6i9tLT/dicJqJhCHrw5tecrx6TQwsSb/WncAbVbceesS8HdxgB1ruEeRtXBaoHjRBHA9/MYdRl7sNdpQjphtw/PVXrIOyA/mTkla/l+gZUvnU/fDurthnMfqUO40gwN90cuZhOnVQZglaqQM+Xj9vZWMYDuBqeceMPAmvWeu9a+Syli273A4OZHGpNcmReUTYheY2tHyBJQ4yyxuaaNoz7+AXVxBw/je4OWWd1//zWcKSb8Fc0SYLb7GJzsGDnj5GCnDC/RQWHw4cSbHKm36wAhleIpsDLUS1yPrRFTaXu57x+eoOUR8CcGLzjKzsyjHXoGdw0glHz4+9DAMjRDE6szkskv3KWuSGYbehDnKmDxEZgRtOeiXG8dvoWtsd8092jbY8jl5GXto44X5Jy9C+i16SiINSZu+lynBfUd6eGNY5eG5UjTp3fz8AF3MI5Ba0eldsFkXxYbI0DOmo79lYkIPUSJe3VlXQyqVuw4eQFRo9WN2+Dj9IvNkM/32mqSIch+kgwixwwRC2hE1gje5XWBVYEokVC/6HgP+LlP0hMwBrqYPALUUIN7fMmfqv8gUOV1KUlvkycdlTieS1H96ruHxBDuSyF300C2FLD0xBamyHghrA103YATQ6UH0q2MrB4czzv82KEfblg=
-  app: recipe-handler
+  app: recipehandler
   on:
     repo: geryke48/recipe-handler
     branch: main
