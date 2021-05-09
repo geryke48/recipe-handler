@@ -5,7 +5,7 @@ node_js: node
 
 # our TypeScript project resides in a subfolder, so before any important script runs
 # we change to this directory
-before_install: cd ..
+# before_install: cd ..
 
 # The default install script is perfect: npm install
 
