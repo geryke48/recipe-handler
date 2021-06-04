@@ -1,2 +1,5 @@
+.vs
 node_modules
 recipeHandler
+recipeHandler.sqlite
+recipeHandler.test.sqlite
