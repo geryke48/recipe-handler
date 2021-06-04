@@ -12,6 +12,8 @@ import { MenuComponent } from './menu/menu.component';
 import { MatListModule}  from '@angular/material/list';
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { AddIngredientComponent } from './add-ingredient/add-ingredient.component';
+import { MatTableModule } from '@angular/material/table';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { AddIngredientComponent } from './add-ingredient/add-ingredient.componen
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

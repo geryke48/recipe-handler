@@ -1,1 +1,23 @@
-<p>add-ingredient works!</p>
+<h1>Add Ingredient</h1>
+
+<table mat-table [dataSource]="ingredients" class="mat-elevation-z8 ingredient-table">
+    <ng-container matColumnDef="id" class="ingredient-table">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name" class="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="unit_of_measure" class="unit">
+        <th mat-header-cell *matHeaderCellDef> Unit of Measure </th>
+        <td mat-cell *matCellDef="let element"> {{element.unit_of_measure}} </td>
+    </ng-container>
+    <!--
+        fix the width of the table, somewhy the unit class is not working
+    -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
