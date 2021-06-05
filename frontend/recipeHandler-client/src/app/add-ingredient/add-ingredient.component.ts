@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AddIngredient } from '../domain/addIngredient'
+import { AddIngredient } from '../domain/addIngredient';
+import { MatDialog } from '@angular/material/dialog';
+import { IngredientEditorComponent } from '../ingredient-editor/ingredient-editor.component';
 
 @Component({
   selector: 'app-add-ingredient',
@@ -19,9 +21,14 @@ export class AddIngredientComponent implements OnInit {
     unit_of_measure: 'g',
   }];
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  startAddIngredient():void {
+    this.dialog.open(IngredientEditorComponent);
+  }
 }

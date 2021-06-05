@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add Ingredient</h1>
+
+<form mat-dialog-content #form="ngForm" (ngSubmit)="submit(form)">
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" name="name" required [(ngModel)]="ingredient.name" #name="ngModel">
+        <mat-error *ngIf="name.invalid">This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Unit of Measure</mat-label>
+        <input matInput type="text" name="unit_of_measure" required [(ngModel)]="ingredient.unit_of_measure" #unit="ngModel">
+        <mat-error *ngIf="unit.invalid">This field is required</mat-error>
+    </mat-form-field>  
+</form>
+<div mat-dialog-actions>
+    <button (click)="submit(form)" mat-flat-button color="primary">Submit</button>
+</div>
