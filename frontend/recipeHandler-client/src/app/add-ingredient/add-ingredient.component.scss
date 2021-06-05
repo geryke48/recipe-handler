@@ -15,10 +15,14 @@
 }
 
 .mat-column-unit_of_measure {
-    text-align: right;
     padding: 0 16px;
 }
 
+.mat-column-edit {
+    width: 45px;
+    text-align: right;
+    border-left: 1px solid lightgray;
+}
 .center {
     text-align: center;
 }

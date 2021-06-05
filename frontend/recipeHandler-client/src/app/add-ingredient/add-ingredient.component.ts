@@ -7,7 +7,7 @@ import { AddIngredient } from '../domain/addIngredient'
   styleUrls: ['./add-ingredient.component.scss']
 })
 export class AddIngredientComponent implements OnInit {
-  displayedColumns = ['id','name', 'unit_of_measure'];
+  displayedColumns = ['id','name', 'unit_of_measure', 'edit'];
 
   ingredients: AddIngredient[] = [{
     id: 0,
