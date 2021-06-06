@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-recipe-editor',
@@ -17,11 +18,11 @@ export class RecipeEditorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private recipeService: RecipeService,
     private dialogRef: MatDialogRef<Recipe>,
   ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   get name(): FormControl {
     return this.recipeForm.get('name') as FormControl;
@@ -35,7 +36,7 @@ export class RecipeEditorComponent implements OnInit {
 
   submit():void {
     if (this.recipeForm.valid){
-      console.log(this.recipeForm.value);
+      this.recipeService.createRecipes(this.recipeForm.value);
       this.dialogRef.close();
     }
   }

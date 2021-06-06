@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddIngredient } from '../domain/addIngredient';
 import { MatDialog } from '@angular/material/dialog';
 import { IngredientEditorComponent } from '../ingredient-editor/ingredient-editor.component';
+import { IngredientService } from '../ingredient.service';
 
 @Component({
   selector: 'app-add-ingredient',
@@ -11,24 +12,19 @@ import { IngredientEditorComponent } from '../ingredient-editor/ingredient-edito
 export class AddIngredientComponent implements OnInit {
   displayedColumns = ['id','name', 'unit_of_measure', 'edit'];
 
-  ingredients: AddIngredient[] = [{
-    id: 0,
-    name: 'Milk',
-    unit_of_measure: 'litre',
-  },{
-    id: 1,
-    name: 'MSG',
-    unit_of_measure: 'g',
-  }];
+  ingredients!: AddIngredient[];
 
   constructor(
     private dialog: MatDialog,
+    private ingredientService: IngredientService,
   ) { }
 
   ngOnInit(): void {
+    this.ingredients = this.ingredientService.getIngredients();
   }
 
   startAddIngredient():void {
     this.dialog.open(IngredientEditorComponent);
   }
+  
 }

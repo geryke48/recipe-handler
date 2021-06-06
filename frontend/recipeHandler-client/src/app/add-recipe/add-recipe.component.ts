@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
 import { RecipeEditorComponent } from '../recipe-editor/recipe-editor.component';
+import { RecipeService } from '../recipe.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -10,25 +11,15 @@ import { RecipeEditorComponent } from '../recipe-editor/recipe-editor.component'
 })
 export class AddRecipeComponent implements OnInit {
 
-  recipes: Recipe[] = [{
-    id: 0,
-    name: 'kacsa',
-    description: 'finom',
-    guide: 'csak csináld',
-    value: [10]
-  },{
-    id: 1,
-    name: 'kukorica',
-    description: 'nagyon finom',
-    guide: 'csak csináld',
-    value: [10]
-  }]
+  recipes!: Recipe[];
 
   constructor(
     private dialog: MatDialog,
+    private recipeService: RecipeService,
   ) { }
 
   ngOnInit(): void {
+    this.recipes = this.recipeService.getRecipes();
   }
 
   startAddIngredient():void {
