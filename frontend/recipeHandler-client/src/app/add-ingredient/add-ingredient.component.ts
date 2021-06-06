@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddIngredient } from '../domain/addIngredient';
 import { MatDialog } from '@angular/material/dialog';
 import { IngredientEditorComponent } from '../ingredient-editor/ingredient-editor.component';
-import { IngredientService } from '../ingredient.service';
+import { IngredientService } from '../core/ingredient.service';
 
 @Component({
   selector: 'app-add-ingredient',

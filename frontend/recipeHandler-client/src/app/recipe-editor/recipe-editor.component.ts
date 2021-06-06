@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
-import { RecipeService } from '../recipe.service';
+import { RecipeService } from '../core/recipe.service';
 
 @Component({
   selector: 'app-recipe-editor',

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddIngredient } from '../domain/addIngredient';
-import { IngredientService } from '../ingredient.service';
+import { IngredientService } from '../core/ingredient.service';
 
 @Component({
   selector: 'app-ingredient-editor',

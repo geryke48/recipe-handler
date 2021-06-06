@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
 import { RecipeEditorComponent } from '../recipe-editor/recipe-editor.component';
-import { RecipeService } from '../recipe.service';
+import { RecipeService } from '../core/recipe.service';
 
 @Component({
   selector: 'app-add-recipe',
