@@ -71,6 +71,10 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "recipeHandler-client:build",
+            "proxyConfig": "proxy/proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "recipeHandler-client:build:production"
