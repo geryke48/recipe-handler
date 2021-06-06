@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AddIngredient } from '../domain/addIngredient';
 
@@ -15,10 +16,12 @@ export class IngredientService {
     unit_of_measure: 'g',
   }];
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient,
+  ) { }
 
-  getIngredients(): AddIngredient[] {
-    return this.ingredients;
+  async getIngredients(): Promise<AddIngredient[]> {
+    return await this.httpClient.get('/api/ingredients').toPromise() as AddIngredient[];
   }
   /*getRecipe(id: number): Recipe {
     return this.recipes[0];

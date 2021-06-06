@@ -18,8 +18,8 @@ export class AddRecipeComponent implements OnInit {
     private recipeService: RecipeService,
   ) { }
 
-  ngOnInit(): void {
-    this.recipes = this.recipeService.getRecipes();
+  async ngOnInit(): Promise<void> {
+    this.recipes = await this.recipeService.getRecipes();
   }
 
   startAddIngredient():void {

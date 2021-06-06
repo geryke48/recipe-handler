@@ -19,8 +19,8 @@ export class AddIngredientComponent implements OnInit {
     private ingredientService: IngredientService,
   ) { }
 
-  ngOnInit(): void {
-    this.ingredients = this.ingredientService.getIngredients();
+  async ngOnInit(): Promise<void> {
+    this.ingredients = await this.ingredientService.getIngredients();
   }
 
   startAddIngredient():void {
