@@ -28,7 +28,7 @@ describe('Recipe Handler', () => {
                     "guide": "fogd az almat es csinalj belole almat",
                     "value": [ '[2', ' 3', ' 4', ' 1]' ],
                     "ingredients": [],
-                    "user": "null"
+                    "user": 'null'
                 });
         });
 
