@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddIngredient } from '../domain/addIngredient';
@@ -19,7 +19,7 @@ export class IngredientEditorComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private ingredientService: IngredientService,
-    private dialogRef: MatDialogRef<AddIngredient>,
+    @Optional() public dialogRef: MatDialogRef<AddIngredient>,
   ) { }
 
   ngOnInit(): void {}
@@ -37,5 +37,9 @@ export class IngredientEditorComponent implements OnInit {
       this.dialogRef.close();
       window.location.reload();
     }
+  }
+  
+  cancel():void {
+    this.dialogRef?.close();
   }
 }

@@ -26,4 +26,5 @@
 </form>
 <div mat-dialog-actions>
     <button (click)="submit()" mat-flat-button color="primary">Submit</button>
+    <button *ngIf="dialogRef" (click)="cancel()" mat-flat-button type="button" color="secondary">cancel</button>
 </div>
