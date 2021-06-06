@@ -1,8 +1,11 @@
 import { wrap } from '@mikro-orm/core';
 import { Router } from 'express';
 import { Recipe } from '../entities/recipe';
+import { UserRole } from '../entities/users';
+import { auth } from '../security/authorize';
 
 export const recipeRouter = Router();
+//export default recipeRouter;
 
 recipeRouter
     .use((req, res, next) => {
@@ -39,7 +42,7 @@ recipeRouter
         res.send(recipes);
     })
 
-    .delete('/:id', async (req, res) => {
+    .delete('/:id', auth(UserRole.Admin), async (req, res) => {
         await req.recipeRepository!.nativeDelete({ id: Number(req.params.id)});
         res.sendStatus(200);
     })
