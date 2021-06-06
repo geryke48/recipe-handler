@@ -8,9 +8,9 @@
             name="name"
             required
             formControlName="name">
-        <!--<mat-error *ngIf="name.invalid">
-                This field is required
-        </mat-error>-->
+        <mat-error *ngIf="name.invalid">
+            {{name.errors! | appErrors }}
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Description</mat-label>
@@ -20,14 +20,9 @@
             maxlength="50"
             formControlName="description">
         </textarea>
-        <!--<mat-error *ngIf="description.invalid">
-            <ng-container *ngIf="description.errors!.required">
-                This field is required
-            </ng-container>
-            <ng-container *ngIf="description.errors!.maxlength">
-                Must be no more than {{ description.errors!.maxlength.requiredLength }} characters
-            </ng-container>
-        </mat-error>-->
+        <mat-error *ngIf="description.invalid">
+            {{description.errors! | appErrors }}
+        </mat-error>
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Guide</mat-label>
@@ -36,9 +31,9 @@
             name="guid"
             formControlName="guide">
         </textarea>
-        <!--<mat-error *ngIf="guide.invalid">
-            This field is required
-        </mat-error>-->
+        <mat-error *ngIf="guide.invalid">
+            {{guide.errors! | appErrors }}
+        </mat-error>
     </mat-form-field>
 </form>
 <div mat-dialog-actions>

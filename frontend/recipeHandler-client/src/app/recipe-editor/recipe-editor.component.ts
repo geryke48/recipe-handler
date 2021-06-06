@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
+import { AbstractControl, Form, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Recipe } from '../domain/recipe';
 
 @Component({
@@ -19,6 +19,16 @@ export class RecipeEditorComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+  }
+
+  get name(): FormControl {
+    return this.recipeForm.get('name') as FormControl;
+  }
+  get description(): FormControl {
+    return this.recipeForm.get('description') as FormControl;
+  }
+  get guide(): FormControl {
+    return this.recipeForm.get('guide') as FormControl;
   }
 
   submit():void {

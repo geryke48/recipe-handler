@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
+import { ErrorsPipe } from './errors.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
     AddRecipeComponent,
     AddIngredientComponent,
     IngredientEditorComponent,
-    RecipeEditorComponent
+    RecipeEditorComponent,
+    ErrorsPipe
   ],
   imports: [
     BrowserModule,
