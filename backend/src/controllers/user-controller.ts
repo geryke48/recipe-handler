@@ -1,28 +1,44 @@
 import { wrap } from '@mikro-orm/core';
 import { Router } from 'express';
-import { Users } from '../entities/users';
+import { User } from '../entities/users';
 import { UserRole } from '../entities/users';
+import { generateJwt } from '../security/jwt-generator';
+import { hashPassword } from '../security/password-utils';
 
 export const userRouter = Router();
 
 userRouter
     .use((req, res, next) => {
-        req.userRepository = req.orm.em.getRepository(Users);
+        req.userRepository = req.orm.em.getRepository(User);
         next();
     })
-    .post('', async (req, res) => {
-        const user = new Users();
+    .post('/register', async (req, res) => {
+        const user = new User();
 
         const wrappedUser = wrap(user);
         wrappedUser.assign(req.body);
         user.role = UserRole.User;
+        user.password = await hashPassword(user.password);
 
-        await req.userRepository?.persistAndFlush(user);
+        await req.userRepository!.persistAndFlush(user);
 
         res.send(user);
     })
-    .get('', async (req, res) => {
-        const users = (req as any).user;
-        //const users = await req.userRepository!.findAll();
-        res.send(users);
-    })
+    .post('/login', async (req, res) => {
+        const user = await req.userRepository!.findOne({ username: req.body.username });
+        if (!user) {
+            res.sendStatus(404);
+            return;
+        }
+        
+        const hashedPassword = await hashPassword(req.body.password);
+        if (hashedPassword !== user.password) {
+            res.sendStatus(404);
+            return;
+        }
+
+        res.send({
+            user,
+            token: generateJwt(user),
+        });
+    });

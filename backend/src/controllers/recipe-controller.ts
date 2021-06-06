@@ -11,6 +11,7 @@ recipeRouter
     })
     .get('', async (req, res) => {
         const recipes = await req.recipeRepository!.findAll(['ingredients']);
+        console.log(req.user);
         res.send(recipes);
     })
     .post('', async (req, res) => {

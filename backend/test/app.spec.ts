@@ -27,7 +27,8 @@ describe('Recipe Handler', () => {
                     "description": "alma es nem alma",
                     "guide": "fogd az almat es csinalj belole almat",
                     "value": [ '[2', ' 3', ' 4', ' 1]' ],
-                    "ingredients": []
+                    "ingredients": [],
+                    "user": "null"
                 });
         });
 

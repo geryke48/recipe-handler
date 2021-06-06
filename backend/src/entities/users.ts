@@ -2,7 +2,7 @@ import { Collection, Entity, Enum, OneToMany, PrimaryKey, Property } from "@mikr
 import { Recipe } from "./recipe";
 
 @Entity()
-export class Users {
+export class User {
     @PrimaryKey()
     id!: number;
 
