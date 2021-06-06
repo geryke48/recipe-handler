@@ -6,6 +6,6 @@ import { userRouter } from './user-controller';
 
 export const router = Router();
 
-router.use('/recipes', passport.authenticate('jwt', { session: false }), recipeRouter);
+router.use('/recipes', /*passport.authenticate('jwt', { session: false }),*/ recipeRouter);
 router.use('/ingredients', ingredientRouter);
 router.use('/users', userRouter);
