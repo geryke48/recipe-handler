@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AddIngredient } from '../domain/addIngredient';
 
@@ -9,22 +9,29 @@ import { AddIngredient } from '../domain/addIngredient';
   styleUrls: ['./ingredient-editor.component.scss']
 })
 export class IngredientEditorComponent implements OnInit {
-  ingredient: AddIngredient = {
-    id: 0,
-    name: '',
-    unit_of_measure: '',
-  };
+  ingredientForm: FormGroup = this.fb.group({
+    name: [''],
+    unit_of_measure: [''],
+  });
 
   constructor(
+    private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddIngredient>,
   ) { }
 
   ngOnInit(): void {
   }
 
-  submit(form:NgForm):void {
-    if (form.valid){
-      console.log(this.ingredient);
+  get name(): FormControl {
+    return this.ingredientForm.get('name') as FormControl;
+  }
+  get unit_of_measure(): FormControl {
+    return this.ingredientForm.get('unit_of_measure') as FormControl;
+  }
+
+  submit():void {
+    if (this.ingredientForm.valid){
+      console.log(this.ingredientForm.value);
       this.dialogRef.close();
     }
   }
