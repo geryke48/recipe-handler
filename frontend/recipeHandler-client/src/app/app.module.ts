@@ -19,7 +19,8 @@ import { IngredientEditorComponent } from './ingredient-editor/ingredient-editor
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { MatExpansionModule } from '@angular/material/expansion';
+import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MenuComponent,
     AddRecipeComponent,
     AddIngredientComponent,
-    IngredientEditorComponent
+    IngredientEditorComponent,
+    RecipeEditorComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
     ReactiveFormsModule,
     MatToolbarModule,
     MatIconModule,
@@ -43,7 +44,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

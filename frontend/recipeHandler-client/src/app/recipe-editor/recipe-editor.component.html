@@ -1,0 +1,46 @@
+<h1 mat-dialog-title>Add Recipe</h1>
+
+<form [formGroup]="recipeForm" (ngSubmit)="submit()" mat-dialog-content >
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput 
+            type="text"
+            name="name"
+            required
+            formControlName="name">
+        <!--<mat-error *ngIf="name.invalid">
+                This field is required
+        </mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea matInput 
+            type="text"
+            name="description"
+            maxlength="50"
+            formControlName="description">
+        </textarea>
+        <!--<mat-error *ngIf="description.invalid">
+            <ng-container *ngIf="description.errors!.required">
+                This field is required
+            </ng-container>
+            <ng-container *ngIf="description.errors!.maxlength">
+                Must be no more than {{ description.errors!.maxlength.requiredLength }} characters
+            </ng-container>
+        </mat-error>-->
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Guide</mat-label>
+        <textarea matInput 
+            type="text"
+            name="guid"
+            formControlName="guide">
+        </textarea>
+        <!--<mat-error *ngIf="guide.invalid">
+            This field is required
+        </mat-error>-->
+    </mat-form-field>
+</form>
+<div mat-dialog-actions>
+    <button mat-flat-button color="primary">Submit</button>
+</div>
