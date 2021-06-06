@@ -17,6 +17,7 @@
         <textarea matInput 
             type="text"
             name="description"
+            required
             maxlength="50"
             formControlName="description">
         </textarea>
@@ -28,7 +29,8 @@
         <mat-label>Guide</mat-label>
         <textarea matInput 
             type="text"
-            name="guid"
+            name="guide"
+            required
             formControlName="guide">
         </textarea>
         <mat-error *ngIf="guide.invalid">
@@ -37,5 +39,5 @@
     </mat-form-field>
 </form>
 <div mat-dialog-actions>
-    <button mat-flat-button color="primary">Submit</button>
+    <button (click)="submit()" mat-flat-button color="primary">Submit</button>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
+import { RecipeEditorComponent } from '../recipe-editor/recipe-editor.component';
 
 @Component({
   selector: 'app-add-recipe',
@@ -22,9 +24,14 @@ export class AddRecipeComponent implements OnInit {
     value: [10]
   }]
 
-  constructor() { }
+  constructor(
+    private dialog: MatDialog,
+  ) { }
 
   ngOnInit(): void {
   }
 
+  startAddIngredient():void {
+    this.dialog.open(RecipeEditorComponent);
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, Form, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
 
 @Component({
@@ -16,6 +17,7 @@ export class RecipeEditorComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
+    private dialogRef: MatDialogRef<Recipe>,
   ) {}
 
   ngOnInit(): void {
@@ -34,6 +36,7 @@ export class RecipeEditorComponent implements OnInit {
   submit():void {
     if (this.recipeForm.valid){
       console.log(this.recipeForm.value);
+      this.dialogRef.close();
     }
   }
 }
