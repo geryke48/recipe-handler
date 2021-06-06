@@ -22,6 +22,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
 import { ErrorsPipe } from './core/errors.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ErrorsPipe } from './core/errors.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
