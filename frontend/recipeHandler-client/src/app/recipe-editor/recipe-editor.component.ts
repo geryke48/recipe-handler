@@ -44,6 +44,7 @@ export class RecipeEditorComponent implements OnInit {
   }
 
   async submit():Promise<void> {
+    this.recipeForm.markAllAsTouched();
     if (this.recipeForm.valid){
       if (this.recipeToEdit){
         await this.recipeService.editRecipe(this.recipeToEdit, this.recipeForm.value);

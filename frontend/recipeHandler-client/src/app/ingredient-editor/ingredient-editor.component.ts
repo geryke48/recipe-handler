@@ -39,6 +39,7 @@ export class IngredientEditorComponent implements OnInit {
   }
 
   async submit():Promise<void> {
+    this.ingredientForm.markAllAsTouched();
     if (this.ingredientForm.valid){
       if (this.ingredientToEdit){
         await this.ingredientService.editIngredient(this.ingredientToEdit, this.ingredientForm.value);
