@@ -23,6 +23,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { RecipeEditorComponent } from './recipe-editor/recipe-editor.component';
 import { ErrorsPipe } from './core/errors.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { HttpClientModule } from '@angular/common/http';
     AddIngredientComponent,
     IngredientEditorComponent,
     RecipeEditorComponent,
-    ErrorsPipe
+    ErrorsPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
