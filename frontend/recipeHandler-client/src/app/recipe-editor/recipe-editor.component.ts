@@ -1,6 +1,6 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
 import { RecipeService } from '../core/recipe.service';
 
@@ -20,9 +20,18 @@ export class RecipeEditorComponent implements OnInit {
     private fb: FormBuilder,
     private recipeService: RecipeService,
     @Optional() public dialogRef?: MatDialogRef<Recipe>,
+    @Inject(MAT_DIALOG_DATA) @Optional() private recipeToEdit?: Recipe,
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.recipeToEdit){
+      this.recipeForm.reset({
+        name: this.recipeToEdit.name,
+        description: this.recipeToEdit.description,
+        guide: this.recipeToEdit.guide,
+      })
+    }
+  }
 
   get name(): FormControl {
     return this.recipeForm.get('name') as FormControl;
@@ -35,8 +44,13 @@ export class RecipeEditorComponent implements OnInit {
   }
 
   async submit():Promise<void> {
+    this.recipeForm.markAllAsTouched();
     if (this.recipeForm.valid){
-      await this.recipeService.createRecipes(this.recipeForm.value);
+      if (this.recipeToEdit){
+        await this.recipeService.editRecipe(this.recipeToEdit, this.recipeForm.value);
+      } else {
+        await this.recipeService.createRecipe(this.recipeForm.value);
+      }
       this.dialogRef?.close();
     }
   }

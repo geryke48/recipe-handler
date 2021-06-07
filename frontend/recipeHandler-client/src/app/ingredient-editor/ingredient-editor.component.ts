@@ -1,6 +1,6 @@
-import { Component, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, NgForm } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AddIngredient } from '../domain/addIngredient';
 import { IngredientService } from '../core/ingredient.service';
 
@@ -19,9 +19,17 @@ export class IngredientEditorComponent implements OnInit {
     private fb: FormBuilder,
     private ingredientService: IngredientService,
     @Optional() public dialogRef: MatDialogRef<AddIngredient>,
+    @Inject(MAT_DIALOG_DATA) @Optional() private ingredientToEdit?: AddIngredient,
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.ingredientToEdit){
+      this.ingredientForm.reset({
+        name: this.ingredientToEdit.name,
+        unit_of_measure: this.ingredientToEdit.unit_of_measure,
+      })
+    }
+  }
 
   get name(): FormControl {
     return this.ingredientForm.get('name') as FormControl;
@@ -31,8 +39,13 @@ export class IngredientEditorComponent implements OnInit {
   }
 
   async submit():Promise<void> {
+    this.ingredientForm.markAllAsTouched();
     if (this.ingredientForm.valid){
-      await this.ingredientService.createIngredient(this.ingredientForm.value);
+      if (this.ingredientToEdit){
+        await this.ingredientService.editIngredient(this.ingredientToEdit, this.ingredientForm.value);
+      } else {
+        await this.ingredientService.createIngredient(this.ingredientForm.value);
+      }
       this.dialogRef.close();
     }
     window.location.reload();

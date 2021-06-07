@@ -25,9 +25,17 @@ export class AddRecipeComponent implements OnInit {
     this.recipes = await this.recipeService.getRecipes();
   }
 
-  startAddRecipe():void {
+  async startAddRecipe():Promise<void> {
     const dialogRef = this.dialog.open(RecipeEditorComponent);
-    dialogRef.afterClosed().toPromise();
+    await dialogRef.afterClosed().toPromise();
+    this.getRecipes();
+  }
+
+  async startEditRecipe(recipe:Recipe):Promise<void> {
+    const dialogRef = this.dialog.open(RecipeEditorComponent, {
+      data: recipe,
+    });
+    await dialogRef.afterClosed().toPromise();
     this.getRecipes();
   }
 }
