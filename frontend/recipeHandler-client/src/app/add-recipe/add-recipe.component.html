@@ -2,18 +2,19 @@
 <mat-accordion>
   <mat-expansion-panel *ngFor="let recipe of recipes">
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{ recipe.name}}
+      <mat-panel-title class="noFlex">
+        {{ recipe.name }}
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description class="noFlex">
         <p>{{ recipe.description }}</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>{{ recipe.guide }}</p>
-    <h3>Összetevők</h3>
+    <h3 class="title">Összetevők</h3>
     <mat-list role="list" *ngFor="let ingredient of recipe.ingredients, let i = index" >
-      <mat-list-item role="listitem">{{ ingredient.name }} {{ recipe.value[i] }} {{ ingredient.unit_of_measure }}</mat-list-item>
+      <mat-list-item role="listitem" class="listItem">{{ ingredient.name }} {{ recipe.value[i] }} {{ ingredient.unit_of_measure }}</mat-list-item>
     </mat-list>
+    <h3 class="title">Elkészítés</h3>
+    <p>{{ recipe.guide }}</p>
     <mat-action-row>
       <button mat-icon-button (click)="startEditRecipe(recipe)">
         <mat-icon>edit</mat-icon>
