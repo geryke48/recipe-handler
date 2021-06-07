@@ -10,7 +10,6 @@ import { RecipeService } from '../core/recipe.service';
   styleUrls: ['./add-recipe.component.scss']
 })
 export class AddRecipeComponent implements OnInit {
-
   recipes!: Recipe[];
 
   constructor(
@@ -18,11 +17,17 @@ export class AddRecipeComponent implements OnInit {
     private recipeService: RecipeService,
   ) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
+    this.getRecipes();
+  }
+
+  private async getRecipes():Promise<void> {
     this.recipes = await this.recipeService.getRecipes();
   }
 
-  startAddIngredient():void {
-    this.dialog.open(RecipeEditorComponent);
+  startAddRecipe():void {
+    const dialogRef = this.dialog.open(RecipeEditorComponent);
+    dialogRef.afterClosed().toPromise();
+    this.getRecipes();
   }
 }

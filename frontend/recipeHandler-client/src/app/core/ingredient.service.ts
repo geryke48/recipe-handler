@@ -6,16 +6,6 @@ import { AddIngredient } from '../domain/addIngredient';
   providedIn: 'root'
 })
 export class IngredientService {
-  private ingredients: AddIngredient[] = [{
-    id: 0,
-    name: 'Milk',
-    unit_of_measure: 'litre',
-  },{
-    id: 1,
-    name: 'MSG',
-    unit_of_measure: 'g',
-  }];
-
   constructor(
     private httpClient: HttpClient,
   ) { }
@@ -26,7 +16,7 @@ export class IngredientService {
   /*getRecipe(id: number): Recipe {
     return this.recipes[0];
   }*/
-  createIngredient(ingredient: AddIngredient): void {
-    this.ingredients.push(ingredient);
+  async createIngredient(ingredient: AddIngredient): Promise<AddIngredient> {
+    return await this.httpClient.post('/api/ingredients', ingredient).toPromise() as AddIngredient;
   }
 }

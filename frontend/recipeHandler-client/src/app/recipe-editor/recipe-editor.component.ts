@@ -34,9 +34,9 @@ export class RecipeEditorComponent implements OnInit {
     return this.recipeForm.get('guide') as FormControl;
   }
 
-  submit():void {
+  async submit():Promise<void> {
     if (this.recipeForm.valid){
-      this.recipeService.createRecipes(this.recipeForm.value);
+      await this.recipeService.createRecipes(this.recipeForm.value);
       this.dialogRef?.close();
     }
   }

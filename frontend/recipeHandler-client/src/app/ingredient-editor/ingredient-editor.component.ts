@@ -11,7 +11,6 @@ import { IngredientService } from '../core/ingredient.service';
 })
 export class IngredientEditorComponent implements OnInit {
   ingredientForm: FormGroup = this.fb.group({
-    id: 3,
     name: [''],
     unit_of_measure: [''],
   });
@@ -31,12 +30,12 @@ export class IngredientEditorComponent implements OnInit {
     return this.ingredientForm.get('unit_of_measure') as FormControl;
   }
 
-  submit():void {
+  async submit():Promise<void> {
     if (this.ingredientForm.valid){
-      this.ingredientService.createIngredient(this.ingredientForm.value);
+      await this.ingredientService.createIngredient(this.ingredientForm.value);
       this.dialogRef.close();
-      window.location.reload();
     }
+    window.location.reload();
   }
   
   cancel():void {

@@ -6,19 +6,6 @@ import { Recipe } from '../domain/recipe';
   providedIn: 'root'
 })
 export class RecipeService {
-  private recipes: Recipe[] = [{
-    id: 0,
-    name: 'kacsa',
-    description: 'finom',
-    guide: 'csak csináld',
-    value: [10]
-  },{
-    id: 1,
-    name: 'kukorica',
-    description: 'nagyon finom',
-    guide: 'csak csináld',
-    value: [10]
-  }]
   constructor(
     private httpClient: HttpClient,
   ) { }
@@ -27,7 +14,7 @@ export class RecipeService {
     return await this.httpClient.get('/api/recipes').toPromise() as Recipe[];
   }
 
-  createRecipes(recipe: Recipe): void {
-    this.recipes.push(recipe);
+  async createRecipes(recipe: Recipe):Promise<Recipe> {
+    return await this.httpClient.post('/api/recipes', recipe).toPromise() as Recipe;
   }
 }

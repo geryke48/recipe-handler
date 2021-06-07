@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ValueSansProvider } from '@angular/core';
 import { AddIngredient } from '../domain/addIngredient';
 import { MatDialog } from '@angular/material/dialog';
 import { IngredientEditorComponent } from '../ingredient-editor/ingredient-editor.component';
@@ -19,12 +19,17 @@ export class AddIngredientComponent implements OnInit {
     private ingredientService: IngredientService,
   ) { }
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit():void {
+    this.getIngredients();
+  }
+
+  private async getIngredients():Promise<void> {
     this.ingredients = await this.ingredientService.getIngredients();
   }
 
   startAddIngredient():void {
-    this.dialog.open(IngredientEditorComponent);
+    const dialogRef = this.dialog.open(IngredientEditorComponent);
+    dialogRef.afterClosed().toPromise();
+    this.getIngredients();
   }
-  
 }
