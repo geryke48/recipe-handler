@@ -27,9 +27,17 @@ export class AddIngredientComponent implements OnInit {
     this.ingredients = await this.ingredientService.getIngredients();
   }
 
-  startAddIngredient():void {
+  async startAddIngredient():Promise<void> {
     const dialogRef = this.dialog.open(IngredientEditorComponent);
-    dialogRef.afterClosed().toPromise();
+    await dialogRef.afterClosed().toPromise();
+    this.getIngredients();
+  }
+
+  async startEditIngredient(ingredient:AddIngredient):Promise<void> {
+    const dialogRef = this.dialog.open(IngredientEditorComponent, {
+      data: ingredient,
+    });
+    await dialogRef.afterClosed().toPromise();
     this.getIngredients();
   }
 }

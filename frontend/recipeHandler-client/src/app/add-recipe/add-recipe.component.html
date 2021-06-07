@@ -10,6 +10,11 @@
       </mat-panel-description>-->
     </mat-expansion-panel-header>
     <p>{{ recipe.description }}</p>
+    <mat-action-row>
+      <button mat-icon-button (click)="startEditRecipe(recipe)">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
 
