@@ -28,3 +28,5 @@ A website to track recipes.
 - POST /ingredients - Creates an ingredient
 - PUT /ingredients/:id - Updates/Edits an ingredient by ID
 - DELETE /ingredients/:id - Deletes a ingredient by ID
+- POST /register - Registers a new User
+- POST /login - Logs into an existing account
