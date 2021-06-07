@@ -5,11 +5,15 @@
       <mat-panel-title>
         {{ recipe.name}}
       </mat-panel-title>
-      <!--<mat-panel-description>
-        This is a summary of the content
-      </mat-panel-description>-->
+      <mat-panel-description>
+        <p>{{ recipe.description }}</p>
+      </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>{{ recipe.description }}</p>
+    <p>{{ recipe.guide }}</p>
+    <h3>Összetevők</h3>
+    <mat-list role="list" *ngFor="let ingredient of recipe.ingredients, let i = index" >
+      <mat-list-item role="listitem">{{ ingredient.name }} {{ recipe.value[i] }} {{ ingredient.unit_of_measure }}</mat-list-item>
+    </mat-list>
     <mat-action-row>
       <button mat-icon-button (click)="startEditRecipe(recipe)">
         <mat-icon>edit</mat-icon>

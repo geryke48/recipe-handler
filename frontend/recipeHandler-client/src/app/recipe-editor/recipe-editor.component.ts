@@ -42,6 +42,12 @@ export class RecipeEditorComponent implements OnInit {
   get guide(): FormControl {
     return this.recipeForm.get('guide') as FormControl;
   }
+  get value(): FormControl {
+    return this.recipeForm.get('value') as FormControl;
+  }
+  get ingredients(): FormControl {
+    return this.recipeForm.get('ingredients') as FormControl;
+  }
 
   async submit():Promise<void> {
     this.recipeForm.markAllAsTouched();
