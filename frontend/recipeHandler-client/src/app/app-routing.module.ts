@@ -4,13 +4,16 @@ import { AddIngredientComponent } from './add-ingredient/add-ingredient.componen
 import { AddRecipeComponent } from './add-recipe/add-recipe.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
+import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [{
   path: 'addRecipe',
   component: AddRecipeComponent,
+  canActivate: [AuthGuard],
 },{
   path: 'addIngerdient',
   component: AddIngredientComponent,
+  //canActivate: [AuthGuard],
 },{
   path: 'login',
   component: LoginComponent,

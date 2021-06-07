@@ -27,11 +27,11 @@ export class AuthService {
         return !!this.token;
     }
 
-    constructor(@Optional() private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient) {}
 
     async login(loginRequest: LoginRequest): Promise<void> {
         const token = await this.httpClient
-            .post('api/user/login', loginRequest, { responseType: 'text'})
+            .post('api/users/login', loginRequest, { responseType: 'text'})
             .toPromise();
         this.setToken(token);
     }
