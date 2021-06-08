@@ -13,7 +13,7 @@ const routes: Routes = [{
 },{
   path: 'addIngerdient',
   component: AddIngredientComponent,
-  //canActivate: [AuthGuard],
+  canActivate: [AuthGuard],
 },{
   path: 'login',
   component: LoginComponent,

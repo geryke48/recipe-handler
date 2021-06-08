@@ -8,9 +8,14 @@
             name="name"
             required
             formControlName="name">
-        <mat-error *ngIf="name.invalid">
-            {{name.errors! | appErrors }}
-        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Value</mat-label>
+        <input matInput 
+            type="number"
+            name="value"
+            required
+            formControlName="value">
     </mat-form-field>
     <mat-form-field appearance="fill" class="full-width">
         <mat-label>Description</mat-label>

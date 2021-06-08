@@ -10,8 +10,10 @@
       </mat-panel-description>
     </mat-expansion-panel-header>
     <h3 class="title">Összetevők</h3>
-    <mat-list role="list" *ngFor="let ingredient of recipe.ingredients, let i = index" >
-      <mat-list-item role="listitem" class="listItem">{{ ingredient.name }} {{ recipe.value[i] }} {{ ingredient.unit_of_measure }}</mat-list-item>
+    <mat-list role="list" *ngFor="let ingredient of recipe.ingredients, index as i" >
+      <mat-list-item role="listitem" class="listItem">
+        {{ ingredient.name }} {{ recipe.value[i] }} {{ ingredient.unit_of_measure }}
+      </mat-list-item>
     </mat-list>
     <h3 class="title">Elkészítés</h3>
     <p>{{ recipe.guide }}</p>

@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit, Optional } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Recipe } from '../domain/recipe';
 import { RecipeService } from '../core/recipe.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-recipe-editor',
@@ -14,11 +15,13 @@ export class RecipeEditorComponent implements OnInit {
     name: [''],
     description: ['', [Validators.required, Validators.maxLength(50)]],
     guide: [''],
-  });
+    value: new FormArray([new FormControl(null)]),
+  });   
 
   constructor(
     private fb: FormBuilder,
     private recipeService: RecipeService,
+    //private tmp: number[],
     @Optional() public dialogRef?: MatDialogRef<Recipe>,
     @Inject(MAT_DIALOG_DATA) @Optional() private recipeToEdit?: Recipe,
   ) {}
@@ -28,7 +31,8 @@ export class RecipeEditorComponent implements OnInit {
       this.recipeForm.reset({
         name: this.recipeToEdit.name,
         description: this.recipeToEdit.description,
-        guide: this.recipeToEdit.guide,
+        guide: this.recipeToEdit.guide, 
+        value: this.recipeToEdit.value,
       })
     }
   }
